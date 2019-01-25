@@ -6,7 +6,7 @@
 /*   By: pdoherty <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/25 20:46:52 by pdoherty          #+#    #+#             */
-/*   Updated: 2018/11/26 14:58:30 by pdoherty         ###   ########.fr       */
+/*   Updated: 2018/12/12 21:38:06 by pdoherty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_map	*get_map(void)
 	while (i < tr->height)
 	{
 		get_next_line(0, &line);
-		tr->map[i] = ft_strdup(ft_strchr(line, ' ')[1]);
+		tr->map[i] = ft_strdup(&ft_strchr(line, ' ')[1]);
 		free(line);
 		i++;
 	}
@@ -47,7 +47,7 @@ static t_piece	*get_piece(void)
 	return (tr);
 }
 
-static void		print_coords(t_coords *coords, int player)
+static void		print_coords(t_coords *coords)
 {
 	ft_putnbr(coords->y);
 	ft_putchar(' ');
@@ -55,24 +55,37 @@ static void		print_coords(t_coords *coords, int player)
 	ft_putchar('\n');
 }
 
-int				main(int argc, char **argv)
+static int		get_player_number(void)
+{
+	int		player;
+	char	*line;
+
+	get_next_line(0, &line);
+	player = ft_atoi(&line[10]) - 1;
+	free(line);
+	return (player);
+}
+
+int				main(void)
 {
 	t_map		*map;
 	t_piece		*piece;
 	t_coords	*coords;
 	int			player;
 
-	argc = 0;
-	player = get_player();
+	player = get_player_number();
+	map = NULL;
+	piece = NULL;
+	coords = NULL;
 	while (1)
 	{
 		free_structs(map, piece, coords);
 		map = get_map();
 		piece = get_piece();
-		coords = get_coords(map, piece);
-		if (!coords)
-			break ;
+		coords = get_coords(map, piece, player);
 		print_coords(coords);
+		if (!coords->x && !coords->y)
+			break ;
 	}
 	free_structs(map, piece, coords);
 	return (0);

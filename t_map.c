@@ -6,7 +6,7 @@
 /*   By: pdoherty <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 11:35:02 by pdoherty          #+#    #+#             */
-/*   Updated: 2018/11/26 11:36:38 by pdoherty         ###   ########.fr       */
+/*   Updated: 2018/12/08 16:23:34 by pdoherty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ t_map	*new_t_map(void)
 {
 	t_map	*tr;
 	char	*line;
-	char	*split;
+	char	**split;
+	char	**map;
 
 	tr = (t_map *)malloc(sizeof(t_map));
 	get_next_line(0, &line);
@@ -44,7 +45,8 @@ t_map	*new_t_map(void)
 	free(split[1]);
 	free(split[2]);
 	free(split);
-	tr->map = (char **)malloc(sizeof(char *) * tr->height);
-	tr->map[tr->height] = NULL;
+	map = (char **)malloc(sizeof(char *) * (tr->height + 1));
+	map[tr->height] = NULL;
+	tr->map = map;
 	return (tr);
 }

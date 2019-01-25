@@ -6,17 +6,17 @@
 /*   By: pdoherty <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 20:51:41 by pdoherty          #+#    #+#             */
-/*   Updated: 2018/10/21 20:53:07 by pdoherty         ###   ########.fr       */
+/*   Updated: 2018/12/09 15:48:48 by pdoherty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# define BUFF_SIZE	20
-
 # include <stdlib.h>
 # include <unistd.h>
+
+# define BUFF_SIZE		1
 
 typedef struct			s_list
 {

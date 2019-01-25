@@ -1,37 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_num_of_splits.c                                 :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdoherty <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/16 17:37:40 by pdoherty          #+#    #+#             */
-/*   Updated: 2018/12/06 16:12:00 by pdoherty         ###   ########.fr       */
+/*   Created: 2018/11/30 21:50:51 by pdoherty          #+#    #+#             */
+/*   Updated: 2018/11/30 21:50:52 by pdoherty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_num_of_splits(char const *s, char c)
+int	main(void)
 {
-	int	i;
-	int	num;
-	int	in;
-
-	i = 0;
-	num = 0;
-	in = 1;
-	while (s[i])
-	{
-		if (s[i] == c)
-			in = 1;
-		if (s[i] != c)
-		{
-			if (in)
-				num++;
-			in = 0;
-		}
-		i++;
-	}
-	return (num);
+	return (0);
 }

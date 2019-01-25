@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_num_of_splits.c                                 :+:      :+:    :+:   */
+/*   free_structs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdoherty <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/16 17:37:40 by pdoherty          #+#    #+#             */
-/*   Updated: 2018/12/06 16:12:00 by pdoherty         ###   ########.fr       */
+/*   Created: 2018/11/30 21:26:04 by pdoherty          #+#    #+#             */
+/*   Updated: 2018/12/05 11:16:38 by pdoherty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "filler.h"
 
-int	ft_num_of_splits(char const *s, char c)
+void		free_structs(t_map *map, t_piece *piece, t_coords *coords)
 {
-	int	i;
-	int	num;
-	int	in;
-
-	i = 0;
-	num = 0;
-	in = 1;
-	while (s[i])
-	{
-		if (s[i] == c)
-			in = 1;
-		if (s[i] != c)
-		{
-			if (in)
-				num++;
-			in = 0;
-		}
-		i++;
-	}
-	return (num);
+	if (map)
+		free_t_map(map);
+	if (piece)
+		free_t_piece(piece);
+	if (coords)
+		free(coords);
 }

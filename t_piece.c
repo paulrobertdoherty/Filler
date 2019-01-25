@@ -6,7 +6,7 @@
 /*   By: pdoherty <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 11:36:54 by pdoherty          #+#    #+#             */
-/*   Updated: 2018/11/26 11:45:49 by pdoherty         ###   ########.fr       */
+/*   Updated: 2018/12/08 15:54:51 by pdoherty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ t_piece	*new_t_piece(void)
 {
 	t_piece	*tr;
 	char	*line;
-	char	*split;
+	char	**split;
+	char	**piece;
 
 	tr = (t_piece *)malloc(sizeof(t_piece));
 	get_next_line(0, &line);
@@ -42,7 +43,8 @@ t_piece	*new_t_piece(void)
 	free(split[1]);
 	free(split[2]);
 	free(split);
-	tr->piece = (char **)malloc(sizeof(char *) * tr->height);
-	tr->piece[tr->height] = NULL;
+	piece = (char **)malloc(sizeof(char *) * (tr->height + 1));
+	piece[tr->height] = NULL;
+	tr->piece = piece;
 	return (tr);
 }

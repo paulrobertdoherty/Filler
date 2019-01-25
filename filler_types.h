@@ -1,37 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_num_of_splits.c                                 :+:      :+:    :+:   */
+/*   filler_types.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdoherty <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/16 17:37:40 by pdoherty          #+#    #+#             */
-/*   Updated: 2018/12/06 16:12:00 by pdoherty         ###   ########.fr       */
+/*   Created: 2018/11/30 16:34:16 by pdoherty          #+#    #+#             */
+/*   Updated: 2018/12/14 15:57:10 by pdoherty         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FILLER_TYPES_H
+# define FILLER_TYPES_H
 
-int	ft_num_of_splits(char const *s, char c)
+# define PRECISION 0.1
+
+typedef struct	s_map
 {
-	int	i;
-	int	num;
-	int	in;
+	int			width;
+	int			height;
+	char		**map;
+}				t_map;
 
-	i = 0;
-	num = 0;
-	in = 1;
-	while (s[i])
-	{
-		if (s[i] == c)
-			in = 1;
-		if (s[i] != c)
-		{
-			if (in)
-				num++;
-			in = 0;
-		}
-		i++;
-	}
-	return (num);
-}
+typedef struct	s_piece
+{
+	int			width;
+	int			height;
+	char		**piece;
+}				t_piece;
+
+typedef struct	s_coords
+{
+	int			x;
+	int			y;
+}				t_coords;
+
+typedef struct	s_score
+{
+	float		score;
+	t_coords	*spot;
+}				t_score;
+
+#endif
